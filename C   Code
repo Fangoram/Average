@@ -1,0 +1,26 @@
+#include <iostream>
+#include <string>
+#include <stdarg.h>
+
+using namespace std;
+
+double average(int num, ...)
+{
+	va_list arglist;
+	double sum = 0;
+
+	va_start(arglist, num);
+	for (int x = 0; x < num; ++x)
+	{
+		sum += va_arg(arglist, double);
+	}
+	va_end(arglist);
+
+	return sum / num;
+}
+
+int main()
+{
+	cout << average(4.0, 100.40, 300.50, 40.37, 1.5, 10.67) << endl;
+	return 0;
+}
